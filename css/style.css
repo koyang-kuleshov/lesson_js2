@@ -1,4 +1,86 @@
-/* Добавьте стили для верхнего меню, товара, списка товаров и кнопки вызова корзины.
-Добавить значения по умолчанию для аргументов функции.
-Как упростить или сократить запись функций? */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700');
+@import url('http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+html, body {
+	height: 100%;
+    padding: 10px 15px;
+}
+
+.container {
+	width: 1200px;
+	margin: 0px auto;
+}
+
+.head-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	padding-bottom: 20px;
+	border-bottom: solid 1px #000;
+    }
+.logo {
+	margin-top: 10px;
+    /* display: block; */
+	width: 206;
+	height: 26px;
+}
+
+.cart-button {
+    width: 120px;
+    height: 30px;
+    background: #24c524;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    border: solid;
+    font-size: medium;
+}
+
+.cart-button:hover {
+    background: #f88e1e;
+    font-size: large;
+}
+
+.goods-list {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    margin-top: 20px;
+}
+
+.rub {
+  font-family: 'PT Sans', serif;
+}
+
+.goods-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: solid 1px #000;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	padding: 10px 5px;
+}
+
+.goods-item h3 {
+	padding-bottom: 15px;
+}
+
+.goods-item img {
+	padding-bottom: 15px;
+}
+
+
+.goods-item p {
+	padding-bottom: 10px;
+}
+
 
