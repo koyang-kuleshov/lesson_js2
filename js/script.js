@@ -41,7 +41,7 @@ class GoodsList {
     this.goods.forEach( good => {
       summ += parseInt(good.price);
     });
-    console.log(summ);
+    return summ;
   }
 }
 
