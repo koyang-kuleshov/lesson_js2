@@ -1,6 +1,3 @@
-// Переделайте makeGETRequest() так, чтобы она использовала промисы.
-// Добавьте в соответствующие классы методы добавления товара в корзину, удаления товара из корзины и получения списка товаров корзины.
-
 'use strict';
 
 class GoodsItem {
@@ -48,6 +45,7 @@ class GoodsList {
 }
 
 function makeGETRequest(url, callback) {
+// Переделайте makeGETRequest() так, чтобы она использовала промисы.
   var xhr;
 
   if (window.XMLHttpRequest) {
@@ -64,6 +62,59 @@ function makeGETRequest(url, callback) {
 
   xhr.open('GET', url, true);
   xhr.send();
+}
+
+function makePOSTRequest(url, callback) {
+// Переделайте makeGETRequest() так, чтобы она использовала промисы.
+  var xhr;
+
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      callback(xhr.responseText);
+    }
+  }
+
+  xhr.open('POST', url, true);
+  xhr.send();
+}
+// Добавьте в соответствующие классы методы добавления товара в корзину, удаления товара из корзины и получения списка товаров корзины.
+
+class BasketList {
+
+  getBasket() {
+  // /getBasket.json - получить содержимое корзины
+    makeGETRequest(`${API_URL}/getBasket.json`, (goods) =>{
+      this.goods = JSON.parse(goods);
+    })
+  }
+
+  addToBasket(good) {
+    makePOSTRequest(`${API_URL}/addToBasket.json`, (good) =>{
+      this.good = JSON.stringify(good);
+    })
+  }
+
+  sumBasket() {
+    // Сумма товаров в корзине
+  }
+  delItem() {
+    // Удалить товар из корзины
+    makePOSTRequest(`${API_URL}/deleteFromBasket.json`, (good) =>{
+      this.good = JSON.stringify(good);
+    })
+  }
+  quantityItem() {
+    // Изменение количества товара в заказе
+  }
+}
+
+class BasketItem {
 }
 
 const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
