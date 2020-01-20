@@ -1,5 +1,7 @@
 'use strict';
 
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
 class GoodsItem {
   constructor( title, price, img = 'img/default-item.jpg') {
     this.product_name = title;
@@ -21,19 +23,11 @@ class GoodsList {
   }
   fetchGoods(cb) {
     makeGETRequest(`${API_URL}/catalogData.json`, (goods) =>{
-      this.goods = JSON.parse(goods);
+      this.goods = [...goods];
       cb();
     })
   }
 
-  render() {
-    let listHtml = '';
-    this.goods.forEach( good => {
-      const goodItem = new GoodsItem(good.product_name, good.price, good.img);
-      listHtml += goodItem.render();
-    });
-    document.querySelector('.goods-list').insertAdjacentHTML('afterBegin', listHtml);
-  }
 // Метод, который определяет суммарную стоимость всех товаров.
   sumGoods() {
     let summ = 0;
@@ -45,44 +39,36 @@ class GoodsList {
 }
 
 function makeGETRequest(url, callback) {
-// Переделайте makeGETRequest() так, чтобы она использовала промисы.
-  var xhr;
-
-  if (window.XMLHttpRequest) {
-    xhr = new XMLHttpRequest();
-  } else if (window.ActiveXObject) {
-    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-  }
-
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      callback(xhr.responseText);
-    }
-  }
-
-  xhr.open('GET', url, true);
-  xhr.send();
+  fetch(url)
+    .then(result => result.json())
+    .then(data => {
+      let listHtml = '';
+      data.forEach( good => {
+        const goodItem = new GoodsItem(good.product_name, good.price, good.img);
+        listHtml += goodItem.render();
+      });
+      document.querySelector('.goods-list').insertAdjacentHTML('afterBegin', listHtml);
+    })
+    .catch(console.log( `Данные не получены` ))
 }
 
 function makePOSTRequest(url, callback) {
-// Переделайте makeGETRequest() так, чтобы она использовала промисы.
-  var xhr;
-
+// Сделать функцию для POST запроса
+  let xhr;
   if (window.XMLHttpRequest) {
     xhr = new XMLHttpRequest();
   } else if (window.ActiveXObject) {
     xhr = new ActiveXObject("Microsoft.XMLHTTP");
   }
-
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       callback(xhr.responseText);
     }
   }
-
   xhr.open('POST', url, true);
   xhr.send();
 }
+
 // Добавьте в соответствующие классы методы добавления товара в корзину, удаления товара из корзины и получения списка товаров корзины.
 
 class BasketList {
@@ -100,30 +86,15 @@ class BasketList {
     })
   }
 
-  sumBasket() {
-    // Сумма товаров в корзине
-  }
   delItem() {
     // Удалить товар из корзины
     makePOSTRequest(`${API_URL}/deleteFromBasket.json`, (good) =>{
       this.good = JSON.stringify(good);
     })
   }
-  quantityItem() {
-    // Изменение количества товара в заказе
-  }
 }
-
-class BasketItem {
-}
-
-const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 const list = new GoodsList();
-list.fetchGoods(() => {
-  list.render();
-});
+list.fetchGoods();
 list.sumGoods();
-
-
 
