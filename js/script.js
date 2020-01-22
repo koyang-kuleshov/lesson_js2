@@ -52,21 +52,27 @@ function makeGETRequest(url, callback) {
     .catch(console.log( `Данные не получены` ))
 }
 
-function makePOSTRequest(url, callback) {
+let makePOSTRequest = (url) => {
 // Сделать функцию для POST запроса
-  let xhr;
-  if (window.XMLHttpRequest) {
-    xhr = new XMLHttpRequest();
-  } else if (window.ActiveXObject) {
-    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      callback(xhr.responseText);
+  return new Promise((resolve, reject) => {
+    let xhr;
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
-  }
-  xhr.open('POST', url, true);
+    xhr.open('POST', url, true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === '200') {
+          resolve(xhr.responseText);
+        } else {
+          reject('Error')
+        }
+      }
+    }
   xhr.send();
+  });
 }
 
 // Добавьте в соответствующие классы методы добавления товара в корзину, удаления товара из корзины и получения списка товаров корзины.
