@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Homework #4</title>
+  </head>
+  <body>
+    <script>
+      'use strict';
+
+      let str = "'Here's a little song i wrote,\nyou might want to sing it note for note,\ndon't worry, be happy\n\nin every life we have some trouble,\nwhen you worry you make it double\ndon't worry, be happy'";
+
+      let regexp = /(^')|('$)/ig;
+      console.log(str.replace(regexp, '"'));
+    </script>
+  </body>
+</html>
