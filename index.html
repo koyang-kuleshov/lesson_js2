@@ -15,7 +15,7 @@
             <div class=right-header>
               <input type="text" v-model="searchLine" class="goods-search" />
               <img src="img/search.svg" @click="FilterGoods()" class="search-button">
-              <button class="cart-button" @click="isVisibleCart=!isVisibleCart" type="button">Корзина</button>
+              <button class="cart-button" @click="ShowCart()" type="button">Корзина</button>
             </div>
           </div>
         </div>
@@ -30,6 +30,15 @@
               <p>{{ good.price }}<span class="rub">&#8399;</span></p>
               <button @click="addProduct(good)" type="button" class="cart-button">Купить</button>
             </div>
+          </div>
+          <div class="cart" v-show="isVisibleCart">
+            <div class="cart-item" v-for="good in basket">
+              <img :src="productImg" class="cart-img">
+              <h3>{{ good.product_name }}</h3>
+              <p>{{ good.price }}<span class="rub">&#8399;</span></p>
+              <button @click="delProduct(good)" type="button" class="delete-item">Удалить</button>
+            </div>
+            <p class="product_sum">Итого: {{ productSum }}</p>
           </div>
         </div>
       </main>

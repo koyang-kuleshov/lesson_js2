@@ -12,6 +12,7 @@ const app = new Vue({
     searchLine: '',
     basket: [],
     isVisibleCart: false,
+    productSum: 0,
     },
   methods: {
     fetchGoods(url) {
@@ -28,6 +29,20 @@ const app = new Vue({
       const regexp = new RegExp(this.searchLine, 'i');
       this.filteredGoods = this.goods.filter(good =>
         regexp.test(good.product_name));
+    },
+    ShowCart() {
+      if (!this.isVisibleCart) {
+        this.basket.forEach(product => {
+        this.productSum += parseInt(product.price)});
+        this.isVisibleCart = true;
+        console.log(this.basket);
+      } else {
+        this.isVisibleCart = false;
+      }
+    },
+    delProduct(good) {
+      this.basket.pop(good);
+      this.productSum = this.productSum - good.price;
     },
     },
   computed: {
