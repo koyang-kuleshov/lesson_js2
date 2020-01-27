@@ -11,7 +11,7 @@
 
       let str = "'Here's a little song i wrote,\nyou might want to sing it note for note,\ndon't worry, be happy\n\nin every life we have some trouble,\nwhen you worry you make it double\ndon't worry, be happy'";
 
-      let regexp = /(^')|('$)/ig;
+      let regexp = /(\B')|('\B)/ig;
       console.log(str.replace(regexp, '"'));
     </script>
   </body>
