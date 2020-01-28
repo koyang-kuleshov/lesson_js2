@@ -58,3 +58,40 @@ const app = new Vue({
   },
 });
 
+Vue.component('goods-list', {
+  props: ['goods'],
+  template: `
+          <div class="goods-list" v-show="!isVisibleCart">
+            <div class="nothing-found" v-if="filteredGoods.length == 0">Ничего не найдено</div>
+            <goods-item v-for="good in goods" :good="good"></goods-item>
+          </div>
+        `
+});
+
+Vue.component('goods-item', {
+  props: ['good'],
+  template: `<div class="goods-item">
+              <h3>{{ good.product_name }}</h3>
+              <img :src="productImg">
+              <p>{{ good.price }}<span class="rub">&#8399;</span></p>
+              <button @click="addProduct(good)" type="button" class="cart-button">Купить</button>
+            </div>`,
+});
+
+Vue.component('basket-app', {
+  props: ['basket-goods'],
+  template: `<div class="cart" v-show="isVisibleCart">
+            <basket-row v-for="good in basket-goods" :good="good"></basket-row>
+            <p class="product_sum">Итого: {{ productSum }}</p>
+            </div>`
+    });
+
+Vue.component('basket-row', {
+  props: ['good'],
+  template: `<div class="cart-item" v-for="good in basket">
+              <img :src="productImg" class="cart-img">
+              <h3>{{ good.product_name }}</h3>
+              <p>{{ good.price }}<span class="rub">&#8399;</span></p>
+              <button @click="delProduct(good)" type="button" class="delete-item">Удалить</button>
+            </div>`,
+});
