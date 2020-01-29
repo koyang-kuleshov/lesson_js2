@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <meta name="viewport" content="width=device-width" />
-    <title>eShop</title>
-    <script src="js/script.js" defer></script>
-  </head>
-  <body>
-    <div class="header">
-      <div class="container">
-        <div class="head-line">
-          <img src="img/logo.jpg" class="logo"></img>
-          <button class="cart-button" type="button">Корзина</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="logo">Интернет-магазин</div>
+        <div class="cart">
+          <search ref="search"></search>
+          <cart ref="cart"></cart>
         </div>
-      </div>
-    </div>
+    </header>
     <main>
-      <div class="container">
-        <div class="goods-list"></div>
-      <div class="container>
+        <products ref="products"></products>
     </main>
-  </body>
+</div>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/SearchComp.js"></script>
+    <script src="js/CartComp.js"></script>
+    <script src="js/ProducComp.js"></script>
+    <script src="js/main.js"></script>
+</body>
 </html>
