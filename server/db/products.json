@@ -1,9 +1,9 @@
 [
-  { "product_name": "Мышка", "price": 100 },
-  { "product_name": "Клавиатура", "price": 200 },
-  { "product_name": "Колонки", "price": 130 },
-  { "product_name": "Наушники", "price": 150 },
-  { "product_name": "Ноутбук", "price": 400 },
-  { "product_name": "Коврик", "price": 150 },
-  { "product_name": "Кресло", "price": 160 }
+  { "id_product": 123, "product_name": "Мышка", "price": 100, "product_img": "default_item.jpg"},
+  { "id_product": 159, "product_name": "Клавиатура", "price": 200, "product_img": "default_item.jpg" },
+  { "id_product": 930, "product_name": "Колонки", "price": 130, "product_img": "default_item.jpg" },
+  { "id_product": 320, "product_name": "Наушники", "price": 150, "product_img": "default_item.jpg" },
+  { "id_product": 234, "product_name": "Ноутбук", "price": 400, "product_img": "default_item.jpg" },
+  { "id_product": 391, "product_name": "Коврик", "price": 150, "product_img": "default_item.jpg" },
+  { "id_product": 938, "product_name": "Кресло", "price": 160, "product_img": "default_item.jpg" }
 ]

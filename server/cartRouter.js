@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-// const handler = require('handler');
+const handler = require('./handler');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -11,6 +11,14 @@ router.get('/', (req, res) => {
       res.send(data);
     }
   });
+});
+
+router.post('/', () => {
+  handler(req, res, 'add', './server/db/cart.json');
+});
+
+router.put('/:id', () => {
+  handler(req, res, 'change', './server/db/cart.json');
 });
 
 module.exports = router;

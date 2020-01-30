@@ -4,7 +4,7 @@ const cartRouter = require('./cartRouter');
 const app = express();
 
 app.use(express.json());
-app.use('/', express.static('/public'));
+app.use('/', express.static('./public'));
 app.use('/api/cart', cartRouter);
 
 app.get('/api/products', (req, res) => {
@@ -20,7 +20,7 @@ app.get('/api/products', (req, res) => {
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log(`Server started on port ${port}`)
+  console.log(`Server working on port ${port}`)
 });
 
 // app.get();
