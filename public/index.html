@@ -1,50 +1,31 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <meta name="viewport" content="width=device-width" />
-    <title>eShop</title>
-  </head>
-  <body>
-    <div id="app">
-      <header>
-        <div class="container">
-          <div class="head-line">
-            <img src="img/logo.jpg" class="logo"></img>
-            <div class=right-header>
-              <input type="text" v-model="searchLine" class="goods-search" />
-              <img src="img/search.svg" @click="FilterGoods()" class="search-button">
-              <button class="cart-button" @click="ShowCart()" type="button">Корзина</button>
-            </div>
-          </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="logo">Интернет-магазин</div>
+        <div class="cart">
+            <filter-el></filter-el>
+            <cart ref="cart"></cart>
         </div>
-      </header>
-      <main>
-        <div class="container">
-          <div class="goods-list" v-show="!isVisibleCart">
-            <div class="nothing-found" v-if="filteredGoods.length == 0">Ничего не найдено</div>
-            <div class="goods-item" v-for="good in filteredGoods" :key="good.id_product">
-              <h3>{{ good.product_name }}</h3>
-              <img :src="productImg">
-              <p>{{ good.price }}<span class="rub">&#8399;</span></p>
-              <button @click="addProduct(good)" type="button" class="cart-button">Купить</button>
-            </div>
-          </div>
-          <div class="cart" v-show="isVisibleCart">
-            <div class="cart-item" v-for="good in basket">
-              <img :src="productImg" class="cart-img">
-              <h3>{{ good.product_name }}</h3>
-              <p>{{ good.price }}<span class="rub">&#8399;</span></p>
-              <button @click="delProduct(good)" type="button" class="delete-item">Удалить</button>
-            </div>
-            <p class="product_sum">Итого: {{ productSum }}</p>
-          </div>
-        </div>
-      </main>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+    </header>
+    <main>
+        <products ref="products"></products>
+        <error ref="error"></error>
+    </main>
+</div>
+<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/CartComp.js"></script>
+<script src="js/ProducComp.js"></script>
+<script src="js/FilterComp.js"></script>
+<script src="js/ErrorComp.js"></script>
+<script src="js/main.js"></script>
+</body>
 </html>

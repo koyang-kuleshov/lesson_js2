@@ -1,0 +1,30 @@
+{
+    "amount": 0,
+    "countGoods": 0,
+    "contents": [
+        {
+            "quantity": 1,
+            "id_product": 930,
+            "product_name": "Колонки",
+            "price": 130
+        },
+        {
+            "quantity": 1,
+            "id_product": 234,
+            "product_name": "Ноутбук",
+            "price": 400
+        },
+        {
+            "quantity": 2,
+            "id_product": 320,
+            "product_name": "Наушники",
+            "price": 150
+        },
+        {
+            "quantity": 2,
+            "id_product": 159,
+            "product_name": "Клавиатура",
+            "price": 200
+        }
+    ]
+}
