@@ -1,0 +1,24 @@
+{
+    "amount": 0,
+    "countGoods": 0,
+    "contents": [
+        {
+            "quantity": 1,
+            "id_product": 234,
+            "product_name": "Ноутбук",
+            "price": 400
+        },
+        {
+            "quantity": 2,
+            "id_product": 320,
+            "product_name": "Наушники",
+            "price": 150
+        },
+        {
+            "quantity": 2,
+            "id_product": 123,
+            "product_name": "Мышка",
+            "price": 100
+        }
+    ]
+}

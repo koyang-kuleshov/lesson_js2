@@ -1,0 +1,25 @@
+{
+  "name": "lesson_7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koyang-kuleshov/lesson_js2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koyang-kuleshov/lesson_js2/issues"
+  },
+  "homepage": "https://github.com/koyang-kuleshov/lesson_js2#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jasmine": "^3.5.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
+}
